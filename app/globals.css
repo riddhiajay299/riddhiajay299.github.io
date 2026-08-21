@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;700;900&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --background: #F9F2EC;
+  --foreground: #1E1E1E;
+}
+
+@theme {
+  --color-cream: #F9F2EC;
+  --color-cream-light: #FAF8F5;
+  --color-beige: #DBBA9E;
+  --color-beige-dark: #C9A589;
+  --color-editorial-black: #1E1E1E;
+  --color-editorial-white: #FCFBF9;
+  --font-kavoon: var(--font-kavoon);
+  --font-lexend: var(--font-lexend);
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-editorial: "Outfit", sans-serif;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-editorial-black);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom scrollbar to match editorial aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-beige);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-beige-dark);
+}
+
+/* Hide canvas outline */
+canvas {
+  outline: none;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
