@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowUpRight, X, Shield, MailOpen, Activity, Receipt } from "lucide-react";
 
+// try again
+
 interface PageProps {
   isVisible: boolean;
 }
