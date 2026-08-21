@@ -14,13 +14,13 @@ import ServicesPage from "@/components/pages/ServicesPage";
 import ContactPage from "@/components/pages/ContactPage";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { BrandedLoader } from "@/components/pages/BrandedLoader";
+// import { BrandedLoader } from "@/components/pages/BrandedLoader";
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const totalPages = 9;
 
@@ -225,7 +225,7 @@ export default function Home() {
       ref={containerRef}
       className="relative w-full h-screen overflow-y-auto scroll-smooth bg-cream select-none"
     >
-      <BrandedLoader onComplete={() => setLoading(false)} />
+      {/* <BrandedLoader onComplete={() => setLoading(false)} /> */}
       {/* Water glass transparent fixed navigation bar */}
       <nav className={`fixed top-0 left-0 right-0 h-16 transition-all duration-300 z-[80] flex items-center justify-between px-6 md:px-12 select-none ${isScrolled
         ? "bg-[#FAF8F5]/90 backdrop-blur-md border-b border-editorial-black/5"
@@ -315,7 +315,7 @@ export default function Home() {
       </nav>
 
       {/* Pages Container Stacked Vertically */}
-      <div 
+      <div
         className="w-full flex flex-col"
         style={{
           opacity: loading ? 0 : 1,
@@ -410,7 +410,7 @@ export default function Home() {
       </div>
 
       {/* Side Navigation Dots Overlay */}
-      <div 
+      <div
         className="hidden md:flex fixed right-6 md:right-10 top-1/2 -translate-y-1/2 flex-col gap-4 z-40"
         style={{
           opacity: loading ? 0 : 1,
