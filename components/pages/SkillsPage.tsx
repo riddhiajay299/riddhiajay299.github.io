@@ -34,30 +34,30 @@ export default function SkillsPage({ isVisible }: PageProps) {
     {
       number: "01",
       title: "Languages & Core",
-      subtitle: "Foundational scripting & databases",
+      subtitle: "Foundational scripting & frameworks",
       icon: Laptop,
       skills: [
-        "HTML", "CSS", "Python", "JavaScript", "SQL"
+        "HTML", "CSS", "JavaScript", "Python", "SQL", "React / Next.js", "Tailwind CSS"
       ],
     },
     {
       number: "02",
       title: "Specialized Tech",
-      subtitle: "AI agents & data sciences",
+      subtitle: "AI agents, models & data analysis",
       icon: Cpu,
       skills: [
-        "Agentic AI", "Generative AI", "Data Science", "Data Analysis"
+        "Agentic AI", "Generative AI", "Data Science", "Data Analysis", "Tech Innovation"
       ],
     },
     {
       number: "03",
-      title: "Web, App & Security",
-      subtitle: "Responsive interfaces & security",
+      title: "Design & Security",
+      subtitle: "UI/UX interfaces & cyber defense",
       icon: Palette,
       skills: [
-        "Responsive Web Design", "Database Management",
-        "Android Development", "Cyber Security",
-        "Threat Detection & Defense"
+        "UI/UX Design", "Figma", "Responsive Web Design",
+        "Cyber Security", "Threat Detection & Defense",
+        "Database Management", "Basic Android Dev"
       ],
     },
   ];

@@ -38,13 +38,13 @@ export default function AboutPage({ isVisible }: PageProps) {
 
           <div className="flex flex-col gap-4 text-sm md:text-base leading-relaxed text-editorial-black/80 font-light font-sans max-w-2xl">
             <p>
-              I am a <strong className="font-semibold text-editorial-black">Computer Engineering student</strong> who lives at the intersection of logical engineering and elegant frontend architecture. To me, a computer is a canvas, and code is the brush that breathes life into static designs.
+              I am a <strong className="font-semibold text-editorial-black">Computer Engineering student</strong> and aspiring Software Developer who thrives at the intersection of logical system architecture and elegant frontend design. To me, code is the medium that transforms static ideas into scalable, efficient, and user-friendly applications.
             </p>
             <p>
-              My journey began with a deep curiosity about how systems run, which evolved into a focus on <strong className="font-semibold text-editorial-black">interactive digital experiences</strong>. I build websites that do not simply display information, but tell stories through motion design, fluid interfaces, and micro-animations.
+              With strong foundational expertise in both front-end and back-end development, I combine modern frameworks like <strong className="font-semibold text-editorial-black">React, Next.js, Tailwind CSS</strong> with cutting-edge research in <strong className="font-semibold text-editorial-black">Agentic AI, Generative AI, and Cyber Security</strong>.
             </p>
             <p>
-              As a freelancer and designer, I cooperate with brands and clients to create custom products that stand out. With every project, my target is simple: to make digital interactions feel tactile, premium, and human.
+              Through professional engagements at <strong className="font-semibold text-editorial-black">Gujarat Technological University (GTU)</strong> and <strong className="font-semibold text-editorial-black">Exactable</strong>, I specialize in engineering responsive web interfaces, interactive tools, and defensive platforms with visual consistency and meticulous attention to detail.
             </p>
           </div>
         </div>

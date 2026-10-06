@@ -59,31 +59,41 @@ export default function ContactPage({ isVisible, onScrollToTop }: PageProps) {
             I am currently accepting select freelance projects, frontend design consulting, and technical collaboration opportunities. Feel free to download my resume or connect via any of the digital channels.
           </p>
 
-          {/* Local clock */}
-          <div className="mt-2 flex flex-col gap-0.5">
-            <span className="text-[9px] font-editorial uppercase tracking-widest text-editorial-black/40">
-              Local Zone Time
-            </span>
-            <span className="text-xs font-mono tracking-widest font-bold text-editorial-black/80">
-              {localTime || "12:00:00 PM"} GMT+5:30
-            </span>
+          {/* Local clock & Location */}
+          <div className="mt-2 flex flex-col sm:flex-row gap-4 sm:gap-8">
+            <div className="flex flex-col gap-0.5">
+              <span className="text-[9px] font-editorial uppercase tracking-widest text-editorial-black/40">
+                Location Base
+              </span>
+              <span className="text-xs font-editorial uppercase tracking-widest font-bold text-editorial-black/80">
+                Daman, India
+              </span>
+            </div>
+            <div className="flex flex-col gap-0.5">
+              <span className="text-[9px] font-editorial uppercase tracking-widest text-editorial-black/40">
+                Local Zone Time
+              </span>
+              <span className="text-xs font-mono tracking-widest font-bold text-editorial-black/80">
+                {localTime || "12:00:00 PM"} GMT+5:30
+              </span>
+            </div>
           </div>
         </div>
 
         {/* Right Side: Interactive Typrographic Shelf Links */}
         <div className="lg:col-span-6 flex flex-col justify-center w-full border-t border-editorial-black/10 mt-6 lg:mt-0">
           {[
-            { label: "Direct Email", value: "ridzz.ajay29@gmail.com", icon: Mail },
-            { label: "Call / Message", value: "+91 81609 70449", icon: Phone },
+            { label: "Direct Email", value: "ridzz.ajay29@gmail.com", href: "mailto:ridzz.ajay29@gmail.com", action: "Send Email →", icon: Mail },
+            { label: "Call / WhatsApp", value: "+91 81609 70449", href: "tel:+918160970449", action: "Call Now →", icon: Phone },
             { label: "LinkedIn Connection", value: "linkedin.com/in/riddhi-goswami", href: "https://www.linkedin.com/in/riddhi-goswami-3b0614364/", action: "Let's Network →", icon: FaLinkedin },
-            { label: "Curriculum Vitae", value: "Download Resume (PDF)", href: "/riddhi_20cv.pdf", action: "Get CV →", icon: FileDown }
+            { label: "Curriculum Vitae", value: "Download Resume (PDF)", href: "/riddhi_cv.pdf", action: "Get CV →", icon: FileDown }
           ].map((link, idx) => {
             const Icon = link.icon;
             return (
               <a
                 key={idx}
                 href={link.href}
-                target="_blank"
+                target={link.href.startsWith("http") || link.href.endsWith(".pdf") ? "_blank" : undefined}
                 rel="noreferrer"
                 className="group flex items-center justify-between py-3.5 border-b border-editorial-black/10 hover:bg-[#FAF8F5] px-4 transition-all duration-300 w-full"
               >

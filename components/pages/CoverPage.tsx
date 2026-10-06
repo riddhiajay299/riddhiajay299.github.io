@@ -134,17 +134,17 @@ export default function CoverPage({ isVisible }: PageProps) {
         <div className={`w-full md:col-span-3 flex flex-col justify-center items-start md:items-end text-left md:text-right gap-3 z-10 self-stretch md:py-4 pointer-events-auto transition-all duration-1000 transform delay-100 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
           }`}>
           <div className="text-[10px] font-editorial uppercase tracking-widest text-editorial-black/40">
-            Current Position
+            Current Engagements
           </div>
 
           <div className="text-[9px] font-editorial uppercase tracking-widest text-beige-dark font-bold text-shadow-xs text-shadow-[#F9F2EC]">
             2026 – Present
           </div>
           <div className="text-xs font-semibold font-editorial text-editorial-black">
-            Intern — Exactable
+            Cyber Security & Frontend Intern
           </div>
           <div className="text-xs leading-relaxed text-editorial-black/75 max-w-[200px]">
-            Focused on bridging high-level software architectures with fluid, interactive frontend designs.
+            Building threat defense platforms at GTU and responsive UI/UX web solutions at Exactable.
           </div>
 
         </div>

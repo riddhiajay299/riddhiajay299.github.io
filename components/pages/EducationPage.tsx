@@ -40,7 +40,7 @@ export default function EducationPage({ isVisible }: PageProps) {
   const educationRecords = [
     {
       index: "01",
-      year: "2023 — PRESENT",
+      year: "2023 — 2026",
       degree: "Bachelor of Engineering (Computer Engineering)",
       institution: "Government Engineering College, Daman",
       focus: "Computer Systems, Software Design, Frontend & Backend Development",
@@ -142,6 +142,11 @@ export default function EducationPage({ isVisible }: PageProps) {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Page Footer Number */}
+      <div className="lg:col-span-12 w-full flex justify-end text-xs font-editorial text-editorial-black/60 tracking-widest select-none z-10 font-bold py-4">
+        03 / 09
       </div>
     </div>
   );
