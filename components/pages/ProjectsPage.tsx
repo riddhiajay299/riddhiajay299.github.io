@@ -143,7 +143,7 @@ export default function ProjectsPage({ isVisible }: PageProps) {
   return (
     <div className="w-full h-auto flex flex-col justify-between pt-24 pb-8 px-6 md:px-12 bg-cream text-editorial-black relative">
 
-      {/* Page Header with Slider Controls */}
+      {/* Page Header */}
       <div className="w-full flex flex-row items-end justify-between gap-4 pb-3 border-b border-editorial-black/10 relative z-20">
         <div>
           <span className="text-[10px] font-editorial uppercase tracking-widest text-beige-dark font-bold">
@@ -154,8 +154,8 @@ export default function ProjectsPage({ isVisible }: PageProps) {
           </h1>
         </div>
 
-        {/* Header Slide Counter & Arrows */}
-        <div className="flex items-center gap-3">
+        {/* Desktop Header Slide Counter & Arrows */}
+        <div className="hidden md:flex items-center gap-3">
           <div className="flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-editorial-black/60">
             <span>0{currentSlide + 1}</span>
             <span className="text-editorial-black/30">/</span>
@@ -181,25 +181,107 @@ export default function ProjectsPage({ isVisible }: PageProps) {
         </div>
       </div>
 
-      {/* Slider Viewport Container with Left & Right Floating Arrows */}
-      <div className="relative w-full my-6">
+      {/* MOBILE / SMALL SCREENS: Sticky Stacking Cards (Like Education Cards) */}
+      <div className="block md:hidden flex-col gap-8 my-6 w-full relative pb-8">
+        {projects.map((proj, idx) => (
+          <div
+            key={idx}
+            onClick={() => setActiveProjectIdx(idx)}
+            style={{
+              top: `${76 + idx * 24}px`,
+              zIndex: 10 + idx,
+            }}
+            className={`w-full flex flex-col justify-between p-6 mb-6 rounded-2xl border border-editorial-black/15 shadow-xl transition-all duration-300 sticky cursor-pointer ${proj.bgColor}`}
+          >
+            {/* Header inside each stacked card */}
+            <div className="flex justify-between items-center pb-3 mb-3 border-b border-editorial-black/10 w-full">
+              <span className="text-[9px] uppercase tracking-widest text-editorial-black/40 font-editorial font-bold">
+                Case Study
+              </span>
+              <span className="text-xs font-mono font-bold text-editorial-black/60 tracking-widest">
+                0{proj.number} / 0{projects.length}
+              </span>
+            </div>
 
-        {/* Left Side Floating Arrow Button */}
+            {/* Card Content */}
+            <div className="flex flex-col gap-3 text-left w-full">
+              <div className="flex flex-col gap-1 w-full">
+                <span className="px-2.5 py-0.5 border border-editorial-black/25 rounded-full text-[8px] font-editorial uppercase tracking-widest w-fit bg-neutral-100/50">
+                  {proj.category}
+                </span>
+                <h3 className="font-serif text-xl font-light leading-snug text-editorial-black mt-1">
+                  {proj.title}
+                </h3>
+                <div className="w-8 h-[1px] bg-editorial-black/30 my-0.5"></div>
+                <h4 className="font-serif italic font-normal text-xs text-beige-dark">
+                  {proj.subtitle}
+                </h4>
+              </div>
+
+              {/* Cutout Image Floating Thumbnail */}
+              <div className="relative w-full aspect-[16/9] flex items-center justify-center my-1 overflow-visible">
+                <div
+                  className="absolute w-[80%] aspect-square rounded-full blur-xl opacity-20 pointer-events-none"
+                  style={{ backgroundColor: getGlowColor(proj.bgColor) }}
+                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src={proj.image}
+                    alt={proj.title}
+                    fill
+                    className="object-contain filter drop-shadow-[0_8px_12px_rgba(0,0,0,0.12)]"
+                    sizes="100vw"
+                  />
+                </div>
+              </div>
+
+              {/* Description & Details */}
+              <div className="flex flex-col gap-2.5 border-t border-editorial-black/10 pt-2.5 w-full">
+                <p className="text-xs text-editorial-black/75 font-sans font-light leading-relaxed">
+                  {proj.description}
+                </p>
+
+                <div className="flex flex-wrap items-center justify-between gap-1.5 pt-1">
+                  <div className="flex flex-wrap gap-1">
+                    {proj.tags.slice(0, 3).map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2.5 py-0.5 text-[8px] font-editorial uppercase tracking-widest border border-editorial-black/20 bg-cream/70 text-editorial-black/85 font-semibold rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <span className="text-[8px] font-editorial uppercase tracking-widest text-beige-dark font-bold">
+                    Tap to Inspect →
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* DESKTOP / LARGE SCREENS: Compact Slider with Left & Right Floating Arrows */}
+      <div className="hidden md:block relative w-full my-6">
+
+        {/* Left Floating Arrow Button */}
         <button
           onClick={prevSlide}
           aria-label="Move slider left"
-          className="absolute -left-3 md:-left-5 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md border border-editorial-black/15 shadow-md hover:shadow-xl hover:bg-editorial-black hover:text-cream text-editorial-black transition-all duration-200 group hover:scale-105 focus:outline-none cursor-pointer hidden sm:flex items-center justify-center"
+          className="absolute -left-4 lg:-left-5 top-1/2 -translate-y-1/2 z-30 p-2.5 lg:p-3 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md border border-editorial-black/15 shadow-md hover:shadow-xl hover:bg-editorial-black hover:text-cream text-editorial-black transition-all duration-200 group hover:scale-105 focus:outline-none cursor-pointer flex items-center justify-center"
         >
-          <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:-translate-x-0.5" />
+          <ChevronLeft className="w-4 h-4 lg:w-5 lg:h-5 transition-transform group-hover:-translate-x-0.5" />
         </button>
 
-        {/* Right Side Floating Arrow Button */}
+        {/* Right Floating Arrow Button */}
         <button
           onClick={nextSlide}
           aria-label="Move slider right"
-          className="absolute -right-3 md:-right-5 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md border border-editorial-black/15 shadow-md hover:shadow-xl hover:bg-editorial-black hover:text-cream text-editorial-black transition-all duration-200 group hover:scale-105 focus:outline-none cursor-pointer hidden sm:flex items-center justify-center"
+          className="absolute -right-4 lg:-right-5 top-1/2 -translate-y-1/2 z-30 p-2.5 lg:p-3 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md border border-editorial-black/15 shadow-md hover:shadow-xl hover:bg-editorial-black hover:text-cream text-editorial-black transition-all duration-200 group hover:scale-105 focus:outline-none cursor-pointer flex items-center justify-center"
         >
-          <ChevronRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-0.5" />
+          <ChevronRight className="w-4 h-4 lg:w-5 lg:h-5 transition-transform group-hover:translate-x-0.5" />
         </button>
 
         {/* Sliding Cards Track */}
@@ -212,16 +294,14 @@ export default function ProjectsPage({ isVisible }: PageProps) {
           <div
             className="flex transition-transform duration-500 ease-out gap-5"
             style={{
-              transform: isMobile
-                ? `translateX(-${currentSlide * 100}%)`
-                : `translateX(-${currentSlide * 310}px)`,
+              transform: `translateX(-${currentSlide * 310}px)`,
             }}
           >
             {projects.map((proj, idx) => (
               <div
                 key={idx}
                 onClick={() => setActiveProjectIdx(idx)}
-                className={`w-full ${isMobile ? "min-w-full" : "min-w-[290px] max-w-[310px]"} ${proj.bgColor} border border-editorial-black/10 rounded-xl p-4 md:p-5 flex flex-col justify-between cursor-pointer hover:brightness-95 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden text-left select-none shrink-0`}
+                className={`min-w-[290px] max-w-[310px] ${proj.bgColor} border border-editorial-black/10 rounded-xl p-4 md:p-5 flex flex-col justify-between cursor-pointer hover:brightness-95 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden text-left select-none shrink-0`}
               >
                 {/* Top: Category & Badge */}
                 <div className="z-10 flex justify-between items-start w-full">
@@ -291,9 +371,9 @@ export default function ProjectsPage({ isVisible }: PageProps) {
         </div>
       </div>
 
-      {/* Slide Pagination Indicator Dots & Mobile Nav Arrows */}
-      <div className="w-full flex justify-between items-center pt-1">
-        <div className="flex items-center gap-2">
+      {/* Bottom Footer & Indicator Dots */}
+      <div className="w-full flex justify-between items-center pt-2">
+        <div className="hidden md:flex items-center gap-2">
           {projects.map((proj, idx) => (
             <button
               key={idx}
@@ -307,26 +387,10 @@ export default function ProjectsPage({ isVisible }: PageProps) {
           ))}
         </div>
 
-        {/* Mobile Navigation Arrow Controls */}
-        <div className="flex sm:hidden items-center gap-2">
-          <button
-            onClick={prevSlide}
-            aria-label="Previous Slide"
-            className="p-1.5 rounded-full border border-editorial-black/15 active:bg-editorial-black active:text-cream text-editorial-black"
-          >
-            <ChevronLeft className="w-3.5 h-3.5" />
-          </button>
-          <button
-            onClick={nextSlide}
-            aria-label="Next Slide"
-            className="p-1.5 rounded-full border border-editorial-black/15 active:bg-editorial-black active:text-cream text-editorial-black"
-          >
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
+        <div className="block md:hidden"></div>
 
         {/* Footer Number */}
-        <div className="hidden sm:block text-xs font-editorial text-editorial-black/60 tracking-widest select-none z-10 font-bold">
+        <div className="text-xs font-editorial text-editorial-black/60 tracking-widest select-none z-10 font-bold">
           05 / 09
         </div>
       </div>
